@@ -13,3 +13,7 @@ Feed Reader Testing [Project Rubric](https://review.udacity.com/#!/projects/3442
 - clone / download the repo
 - start index.html
 
+Test file path:
+    /jasmine/spec/feedreader.js
+
+
