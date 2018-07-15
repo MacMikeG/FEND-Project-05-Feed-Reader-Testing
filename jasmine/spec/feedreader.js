@@ -57,17 +57,18 @@ describe('The menu', function () {
     #11 Write a test that ensures the menu element is hidden by default. You'll have to analyze the HTML and the CSS to determine how we're performing the hiding/showing of the menu element.
     */
     it('is hidden by default', function () {
-        expect(document.getElementsByTagName("body")[0]).toHaveClass('menu-hidden');
+        expect(document.body.className).toContain('menu-hidden');
     });
 
     /*
     #12 A test that ensures the menu changes visibility when the menu icon is clicked. 
     */
-        it('changes visibility when the menu icon is clicked', function () {
+    it('changes visibility when the menu icon is clicked', function () {
+        const menuIcon = document.querySelector(".menu-icon-link");
         menuIcon.click();
-        expect(body.className).not.toContain('menu-hidden');    //does the menu display when clicked?
+        expect(document.body.className).not.toContain('menu-hidden');    //does the menu display when clicked?
         menuIcon.click();
-        expect(body.className).toContain('menu-hidden')         //does it hide when clicked again.
+        expect(document.body.className).toContain('menu-hidden')         //does it hide when clicked again.
     });
 });
 
@@ -86,7 +87,7 @@ describe('Initial Entries', function () {
     });
 
     it("there is one or more .entry in the .feed after executing loadFeed()", ((done) => {
-        var numberEntries = document.querySelector(".feed").getElementsByClassName("entry").length;
+        const numberEntries = document.querySelector(".feed").getElementsByClassName("entry").length;
         expect(numberEntries).toBeGreaterThan(0);
         done();
     }));
@@ -97,7 +98,7 @@ describe('Initial Entries', function () {
 */
 describe('New Feed Selection', function () {
 
-    var initFeedSelection;
+    let initFeedSelection;
     beforeEach(function (done) {
         loadFeed(0, function () {
             initFeedSelection = document.querySelector(".feed").innerHTML;
@@ -113,7 +114,7 @@ describe('New Feed Selection', function () {
         loadFeed() is asynchronous.
     */
     it("content changes when a new feed is loaded by the loadFeed", (function(done) {
-        var newFeedSelection = document.querySelector(".feed").innerHTML;
+        const newFeedSelection = document.querySelector(".feed").innerHTML;
         expect(initFeedSelection).not.toBe(newFeedSelection);
         done();
     }));
